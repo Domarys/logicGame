@@ -1,0 +1,52 @@
+Code das ops
+
+001 serverConnectionOk
+002 serverDesconnectionOk
+003 serverFailConnection
+004 serverTimeout
+005 serverNickOk
+006 serverRefreshMain
+007 serverNewGameOk
+008 serverListGameOk
+009 serverRefreshInfo
+010 serverQuestionSend
+011 serverCorrectionSend
+012 serverJumpOk
+013 serverFinishGameOk
+014 serverScore
+015 serverExitOk
+016
+017
+018
+019
+020
+021
+022
+023
+024
+025
+026
+027
+028
+029
+030
+031 clientRequestNick
+032 clientRequestRefresh
+033 clientRequestNewGame
+034 clientRequestInGame
+035 clientRequestInfoGame
+036 clientrequestQuestion
+037 clientRequestCorretion
+038 clientRequestPush
+039 clientRequestFinishGame
+040 clientRequestScore
+041 clientRequestExit
+042
+043
+044
+045
+046
+047
+048
+049
+050
