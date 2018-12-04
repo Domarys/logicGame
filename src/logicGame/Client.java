@@ -21,7 +21,7 @@ public class Client {
 		
 		// solicita conexão com o server
 
-		cnt = this.clientConnection();
+		//cnt = this.clientConnection();
 		
 	}
 	
@@ -65,7 +65,7 @@ public class Client {
 
 
 
-	public int clientConnection () {
+	public void clientConnection () {
 		
 		int ret = 0;
 		
@@ -76,9 +76,7 @@ public class Client {
 			// tela erro
 			
 		}
-		
-		return cnt;
-		
+				
 	};
 	
 	public void clientRequestNick () {

@@ -9,10 +9,6 @@ public class main {
 		
 		ServerMain serverMain = new ServerMain();
 		
-		serverMain.createThreadServer();
-		serverMain.destroyThreadServer();
-		
-
 	}
 
 }

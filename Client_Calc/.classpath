@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/Client_Calc.jar"/>
+	<classpathentry kind="lib" path="dist/lib/Server_Calc_UmCliente.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

@@ -80,6 +80,7 @@ public class ServerMain {
 
 	public void setScoreThread(ArrayList<String> scoreThread) {
 		this.scoreThread = scoreThread;	
+	}
 	
 
 }
