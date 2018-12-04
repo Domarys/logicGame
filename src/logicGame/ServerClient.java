@@ -3,27 +3,84 @@ import java.util.Random;
 
 public class ServerClient {
 	
-	private int idClient, idServer;
+	private String idClient, idServer;
 	
-	public int ServerClient (int idClient) {
+	public ServerClient (String idClient) {
 				
-		int id;
-		Random generator = new Random();
-		id = generator.nextInt(25);
+		this.idClient = idClient;		
+	}	
+	
+	// Sets and getters
+	
+	public String getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(String idClient) {
 		this.idClient = idClient;
-		this.idServer = id;
-		return id;
+	}
+
+	public String getIdServer() {
+		return idServer;
+	}
+
+	public void setIdServer(String idServer) {
+		this.idServer = idServer;
+	}
+
+	// general read method
+
+	public void readMessage(Message msg) {
 		
+		String idOperation = msg.getIdOperation();
+		
+		if (idOperation.equals("030")) {
+			
+		} else if (idOperation.equals("031")) {
+			
+			
+		} else if (idOperation.equals("032")) {
+			
+			
+		} else if (idOperation.equals("033")) {
+			
+			
+		} else if (idOperation.equals("034")) {
+			
+			
+		} else if (idOperation.equals("035")) {
+			
+			
+		} else if (idOperation.equals("036")) {
+			
+			
+		} else if (idOperation.equals("037")) {
+			
+			
+		} else if (idOperation.equals("038")) {
+			
+			
+		} else if (idOperation.equals("039")) {
+			
+			
+		} else if (idOperation.equals("040")) {
+			
+			
+		} else if (idOperation.equals("041")) {
+			
+			
+		} else if (idOperation.equals("042")) {
+			
+			
+		} else {
+			
+			System.out.println("Operação desconhecida");
+			
+		}		
 	}
 	
-	// metodos de mensagens
-	
-	public void connectionOk () {
-		
-		Message msg = new Message();
-		
-		
-	};
+	// operation methods
+
 	public void desconnectionOK () {};
 	public void serverFailConnection () {};
 	public void serverTimeout () {};
