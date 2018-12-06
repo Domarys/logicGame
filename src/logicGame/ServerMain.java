@@ -5,17 +5,15 @@ import java.util.Scanner;
 
 public class ServerMain {
 	
-	private ArrayList<String> threadServer = new ArrayList();
-	private ArrayList<String> scoreThread = new ArrayList();
-
+	public ArrayList<Lista> listGlobal = new ArrayList();
+	private int index = 0;
 	
 	public void ServerMain () {}
 	
 	public void wait_connection() {
 		System.out.println("lola on");
 		// ao verificar a chegada de uma msg 
-		// chama o metodo readMsg
-		
+		// chama o metodo readMsg		
 		
 	}
 	
@@ -25,7 +23,7 @@ public class ServerMain {
 		
 		if (idOperation.equals("030")) {
 		
-			this.createThreadServer(msg);
+			this.createThreadServer(msg,listGlobal);
 					
 			// envia mensagem de volta para o cliente
 			
@@ -37,7 +35,7 @@ public class ServerMain {
 		} else if (idOperation.equals("042")) { // destroi thread server
 			
 			int idThread = Integer.parseInt(msg.getIdServer());
-			this.destroyThreadServer(idThread);			
+			this.destroyThreadServer(msg);			
 			
 		} else if (idOperation.equals("040")) { // devolve tabela de score
 			
@@ -50,37 +48,39 @@ public class ServerMain {
 		}		
 	}
 	
-	public void createThreadServer (Message msg) {
+	public void createThreadServer (Message msg, ArrayList<Lista> listGlobal) {
 		
-		// cria thread servidora
-		int index;
-		this.threadServer.add(msg.getIdClient()); // string
-		ServerClient serverClient = new ServerClient(msg.getIdClient());
-		index = this.threadServer.indexOf(serverClient);	// int		
-		serverClient.setIdServer(Integer.toString(index));
+		// cria thread servidora		
+		ServerClient serverClient = new ServerClient(msg.getIdClient(),listGlobal);
+		Lista lista = new Lista();
+		lista.setIdClient(msg.getIdClient());
+		lista.setIdGame("000");;
+		this.listGlobal.add(lista);
+		lista.setIdServer(String.valueOf(this.listGlobal.indexOf(lista)));
 				
 	}
 	
-	public void destroyThreadServer (int index) {
+	public void destroyThreadServer (Message msg) {
 		
-		this.threadServer.remove(index);
+		this.listGlobal.remove(Integer.parseInt(msg.getIdServer()));
+		// retira da lista o serverClient e seus dados
+				
 	}
 
-	public ArrayList<String> getThreadServer() {
-		return threadServer;
+	public ArrayList<Lista> getListGlobal() {
+		return listGlobal;
 	}
 
-	public void setThreadServer(ArrayList<String> threadServer) {
-		this.threadServer = threadServer;
+	public void setListGlobal(ArrayList<Lista> listGlobal) {
+		this.listGlobal = listGlobal;
 	}
 
-	public ArrayList<String> getScoreThread() {
-		return scoreThread;
+	public int getIndex() {
+		return index;
 	}
 
-	public void setScoreThread(ArrayList<String> scoreThread) {
-		this.scoreThread = scoreThread;	
+	public void setIndex(int index) {
+		this.index = index;
 	}
-	
 
 }

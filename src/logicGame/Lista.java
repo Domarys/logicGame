@@ -2,7 +2,8 @@ package logicGame;
 
 public class Lista {
 
-	String idServer, idClient, idGame, lastScore;
+	private String idServer, idClient, idGame, lastScore;
+	private int index, online=0, waiting=0;
 	
 	public Lista() {}
 
@@ -37,8 +38,29 @@ public class Lista {
 	public void setLastScore(String lastScore) {
 		this.lastScore = lastScore;
 	}
-	
-	
-	
-	
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public int getOnline() {
+		return online;
+	}
+
+	public void setOnline(int online) {
+		this.online = online;
+	}
+
+	public int getWaiting() {
+		return waiting;
+	}
+
+	public void setWaiting(int waiting) {
+		this.waiting = waiting;
+	}
+			
 }

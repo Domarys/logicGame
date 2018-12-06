@@ -4,6 +4,8 @@ Code das ops
 002 serverDesconnectionOk
 003 serverFailConnection
 004 serverTimeout
+3
+
 005 serverNickOk
 006 serverRefreshMain
 007 serverNewGameOk
