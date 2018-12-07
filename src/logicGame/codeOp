@@ -1,22 +1,20 @@
 Code das ops
 
-001 serverConnectionOk (main)
-002 serverDesconnectionOk
-003 serverFailConnection
-004 serverTimeout
-3
-
-005 serverNickOk
-006 serverRefreshMain
-007 serverNewGameOk
-008 serverListGameOk
-009 serverRefreshInfo
-010 serverQuestionSend
-011 serverCorrectionSend
-012 serverJumpOk
-013 serverFinishGameOk
-014 serverScore (Main)
-015 serverExitOk (main)
+001 serverConnectionOk (main) ->client
+002 serverDesconnectionOk (main) ->client
+003 serverFailConnection (main) ->client
+004 serverTimeout (main) ->client
+005 serverNickOk (sc) -> client
+006 serverRefreshMain (sc manda ed para client) -> client
+007 serverNewGameOk (sc cria obj game e devolve idGame) -> client
+008 serverInGameOk (host) -> client
+009 serverRefreshInfo (host) -> client
+010 serverQuestionSend (host) -> client
+011 serverCorrectionSend (host) -> client
+012 serverJumpOk (host) -> client
+013 serverFinishGameOk (host) -> client
+014 serverScore (host) -> client
+015 serverExitOk (sc) -> client
 016
 017
 018
@@ -31,19 +29,19 @@ Code das ops
 027
 028
 029
-030 clientRequestConnection (main)
-031 clientRequestNick
-032 clientRequestRefresh
-033 clientRequestNewGame
-034 clientRequestInGame
-035 clientRequestInfoGame
-036 clientrequestQuestion
-037 clientRequestCorretion
-038 clientRequestPush
-039 clientRequestFinishGame
-040 clientRequestScore (main)
-041 clientRequestExit
-042 clientRequestDesconnection (main)
+030 clientRequestConnection -> client (main)
+031 clientRequestNick -> client (sc)
+032 clientRequestRefresh -> client (sc)
+033 clientRequestNewGame -> client (sc)
+034 clientRequestInGame -> client (sc host)
+035 clientRequestInfoGame  -> client (sc host)
+036 clientrequestQuestion -> client (sc host)
+037 clientRequestCorretion -> client (sc host)
+038 clientRequestPush -> client (sc host)
+039 clientRequestFinishGame -> client (sc host)
+040 clientRequestScore -> client (sc host)
+041 clientRequestExit -> client (volta para o seu sc)
+042 clientRequestDesconnection -> client (server main)
 043
 044
 045
