@@ -6,7 +6,7 @@ public class Client {
 	
 	// interface (Gabriella)
 	
-	private int idClient, idServer;
+	private int idClient, idServer, idHost;
 	String nick = new String();
 	
 	public void Client () {
