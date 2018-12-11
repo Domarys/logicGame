@@ -8,6 +8,7 @@ public class main {
 		System.out.println("\nCriando Server_Main\n");
 		
 		ServerMain serverMain = new ServerMain();
+		serverMain.listening();
 		
 	}
 

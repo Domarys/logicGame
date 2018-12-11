@@ -13,14 +13,15 @@ public class ServerClient {
 	private ArrayList<Lista> list = new ArrayList();
 	private Game game;
 	private Test question;
-	int difficulty, begin =0;
+	int difficulty, begin =0, round=0, index=0;
 	Timestamp timestamp;
 	
 	public ServerClient (String idClient, ArrayList<Lista> lista) {
 				
 		this.idClient = idClient;
-		this.idServer = idServer;
+		this.idServer = String.valueOf(index);
 		this.list = lista;
+		index = index+1;
 	}	
 
 	// general read method
@@ -83,7 +84,7 @@ public class ServerClient {
 			
 		} else if (idOperation.equals("014")) {
 
-			this.serverScore();
+			this.serverScore(msg);
 			
 		} else if (idOperation.equals("015")) {
 
@@ -265,22 +266,32 @@ public class ServerClient {
 		msg.setIdClient(this.idClient);
 		msg.setIdOperation("013");
 		timestamp = new Timestamp(System.currentTimeMillis());
-		msg.setTimestamp(timestamp);		
+		msg.setTimestamp(timestamp);
+		// tirar do array
 	}
 	
-	public void serverScore() {
+	public void serverScore(Message m) {
 		
-		String m = "Jogador1: "+this.game.getScore1()+"Jogador2: "+this.game.getScore2()+".";
-		Message msg = new Message();
-		msg.setIdServer(this.idServer);
-		msg.setIdClient(this.idClient);
-		msg.setIdOperation("014");
-		msg.setFlagAnswer(1);
-		timestamp = new Timestamp(System.currentTimeMillis());
-		msg.setTimestamp(timestamp);		
-		msg.setMsg(m);
-		
+		int s1, s2;
+		s1 = this.game.scoreRefresh(this.game.getScore1(), m.getFlagCorrection());
+		s2 = this.game.scoreRefresh(this.game.getScore2(), m.getFlagCorrection());
+		this.round++;
+
+		if (this.round == 10) {
+			
+			String ms = "Jogador1: "+this.game.getScore1()+"Jogador2: "+this.game.getScore2()+".";
+			Message msg = new Message();
+			msg.setIdServer(this.idServer);
+			msg.setIdClient(this.idClient);
+			msg.setIdOperation("014");
+			msg.setFlagAnswer(1);
+			timestamp = new Timestamp(System.currentTimeMillis());
+			msg.setTimestamp(timestamp);		
+			msg.setMsg(ms);
+			this.serverFinishGameOk();			
+		}		
 	}
+	
 	public void serverExitOk() {
 		
 		Message msg = new Message();

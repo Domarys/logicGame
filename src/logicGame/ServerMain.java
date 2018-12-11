@@ -2,6 +2,12 @@ package logicGame;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServerMain {
 	
@@ -10,12 +16,34 @@ public class ServerMain {
 	
 	public void ServerMain () {}
 	
-	public void wait_connection() {
-		System.out.println("lola on");
-		// ao verificar a chegada de uma msg 
-		// chama o metodo readMsg		
+	public void listening () {
 		
+		while(true) {
+		
+			 try {
+		            ServerSocket server = new ServerSocket(3322);                       
+		            System.out.println("Servidor iniciado na porta 3322");
+		             
+		            Socket cliente = server.accept();
+		            System.out.println("Cliente conectado do IP "+cliente.getInetAddress().
+		                    getHostAddress());
+		            Scanner entrada = new Scanner(cliente.getInputStream());
+		            while(entrada.hasNextLine()){
+		                System.out.println(entrada.nextLine());
+		            }
+		             
+		            entrada.close();
+		            server.close();
+		             
+		        } catch (IOException ex) {
+		        	
+		            Logger.getLogger(ServerMain.class.getName()).log(Level.SEVERE, null, ex);
+		        }	
+			
+			
+		}		
 	}
+	
 	
 	public void readMessage (Message msg) {
 		
@@ -23,7 +51,7 @@ public class ServerMain {
 		
 		if (idOperation.equals("030")) {
 		
-			this.createThreadServer(msg,listGlobal);
+			this.createThreadServer(msg, listGlobal);
 					
 			// envia mensagem de volta para o cliente
 			
@@ -35,12 +63,9 @@ public class ServerMain {
 		} else if (idOperation.equals("042")) { // destroi thread server
 			
 			int idThread = Integer.parseInt(msg.getIdServer());
-			this.destroyThreadServer(msg);			
-			
-		} else if (idOperation.equals("040")) { // devolve tabela de score
+			this.destroyThreadServer(msg);
 			
 			
-						
 		} else {
 			
 			System.out.println("operação invalida!");
